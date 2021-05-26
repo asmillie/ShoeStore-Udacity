@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentLoginBinding
 
@@ -13,14 +14,10 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = DataBindingUtil.inflate(
             inflater,
@@ -29,16 +26,28 @@ class LoginFragment : Fragment() {
             false
         )
 
-        // TODO: Bind buttons
+        initButtons()
 
         return binding.root
     }
 
-    fun onSignup() {
-        // TODO: Navigate to Welcome Screen
+    private fun initButtons() {
+        binding.loginButton.setOnClickListener {
+            onLogin()
+        }
+
+        binding.signupButton.setOnClickListener {
+            onSignup()
+        }
     }
 
-    fun onLogin() {
-        // TODO: Navigate to Welcome Screen
+    private fun onSignup() {
+        val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun onLogin() {
+        val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment()
+        findNavController().navigate(action)
     }
 }
