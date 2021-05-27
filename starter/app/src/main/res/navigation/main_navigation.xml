@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.udacity.shoestore.login.LoginFragment"
-        android:label="fragment_login"
+        android:label="@string/login"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
@@ -17,5 +17,5 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.udacity.shoestore.WelcomeFragment"
-        android:label="WelcomeFragment" />
+        android:label="@string/welcome" />
 </navigation>
