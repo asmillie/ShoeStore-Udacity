@@ -22,9 +22,14 @@ class MainActivity : AppCompatActivity() {
 
         Timber.plant(Timber.DebugTree())
 
-        val navController = this.findNavController(R.id.nav_host_fragment)
+        val navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
