@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".WelcomeFragment">
 
         <TextView
             android:id="@+id/welcome_text"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/welcome"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/welcome_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:text="@string/lorem_ipsum_one_paragraph"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <Button
+            android:id="@+id/view_store_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/button_margin"
+            android:text="@string/view_store" />
+
+    </LinearLayout>
 </layout>
