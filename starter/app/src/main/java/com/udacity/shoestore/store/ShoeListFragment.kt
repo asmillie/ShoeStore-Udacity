@@ -21,4 +21,10 @@ class ShoeListFragment : Fragment() {
 
         return binding.root
     }
+
+    private fun initButtons() {
+        binding.addShoeFab.setOnClickListener {
+            // Navigate to Shoe Detail
+        }
+    }
 }
