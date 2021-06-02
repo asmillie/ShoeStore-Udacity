@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".store.ShoeDetailFragment">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="shoe"
+            type="com.udacity.shoestore.store.models.Shoe" />
+        <variable
+            name="shoeViewModel"
+            type="com.udacity.shoestore.store.ShoeDetailViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".store.ShoeDetailFragment">
 
         <EditText
             android:id="@+id/name_input"
@@ -17,7 +24,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="text"
-            android:text="@string/name"
+            android:text="@{shoe.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.65"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,13 +40,13 @@
             app:layout_constraintTop_toTopOf="@+id/name_input" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/company_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/company"
+            android:text="@{shoe.company}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.65"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,53 +57,54 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/company"
-            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName2"
+            app:layout_constraintEnd_toStartOf="@+id/company_input"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName2" />
+            app:layout_constraintTop_toTopOf="@+id/company_input" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/size_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/size"
+            android:inputType="number|numberDecimal"
+            android:text="@{Double.valueOf(shoe.size).toString()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.65"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+            app:layout_constraintTop_toBottomOf="@+id/company_input" />
 
         <TextView
             android:id="@+id/size_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/size"
-            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName3"
+            app:layout_constraintEnd_toStartOf="@+id/size_input"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName3" />
+            app:layout_constraintTop_toTopOf="@+id/size_input" />
 
         <EditText
-            android:id="@+id/description_text"
+            android:id="@+id/description_input"
             android:layout_width="wrap_content"
             android:layout_height="211dp"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine"
+            android:text="@{shoe.description}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.65"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+            app:layout_constraintTop_toBottomOf="@+id/size_input" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/description_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/description"
-            app:layout_constraintEnd_toStartOf="@+id/description_text"
+            app:layout_constraintEnd_toStartOf="@+id/description_input"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/description_text" />
+            app:layout_constraintTop_toTopOf="@+id/description_input" />
 
         <Button
             android:id="@+id/save_button"
@@ -104,8 +112,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/save"
-            app:layout_constraintEnd_toEndOf="@+id/description_text"
-            app:layout_constraintTop_toBottomOf="@+id/description_text" />
+            app:layout_constraintEnd_toEndOf="@+id/description_input"
+            app:layout_constraintTop_toBottomOf="@+id/description_input" />
 
         <Button
             android:id="@+id/cancel_button"
@@ -113,8 +121,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@android:string/cancel"
-            app:layout_constraintStart_toStartOf="@+id/description_text"
-            app:layout_constraintTop_toBottomOf="@+id/description_text" />
+            app:layout_constraintStart_toStartOf="@+id/description_input"
+            app:layout_constraintTop_toBottomOf="@+id/description_input" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
