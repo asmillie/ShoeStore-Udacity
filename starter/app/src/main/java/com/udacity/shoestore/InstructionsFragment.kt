@@ -19,13 +19,15 @@ class InstructionsFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_instructions, container, false)
 
+        initButton()
+
         return binding.root
     }
 
     private fun initButton() {
         binding.continueButton.setOnClickListener {
             findNavController().navigate(
-                InstructionsFragmentDirections.actionInstructionsFragmentToShoeListFragment()
+                InstructionsFragmentDirections.actionInstructionsFragmentToShoeListFragment(null)
             )
         }
     }

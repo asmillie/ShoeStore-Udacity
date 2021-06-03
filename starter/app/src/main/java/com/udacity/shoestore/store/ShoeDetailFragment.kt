@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.udacity.shoestore.R
@@ -44,13 +45,22 @@ class ShoeDetailFragment : Fragment() {
     private fun initButtons() {
         binding.cancelButton.setOnClickListener {
             findNavController().navigate(
-                ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
+                ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment(null))
         }
 
         binding.saveButton.setOnClickListener {
-            findNavController().navigate(
-                ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment()
-            )
+            findNavController().navigate(getShoeAction())
         }
+    }
+
+    private fun getShoeAction(): NavDirections {
+        val shoe = Shoe(
+            binding.nameInput.text.toString(),
+            binding.sizeInput.text.toString().toDouble(),
+            binding.companyInput.text.toString(),
+            binding.descriptionInput.text.toString()
+        )
+
+        return ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment(shoe)
     }
 }
