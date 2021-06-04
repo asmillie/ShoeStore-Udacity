@@ -14,16 +14,15 @@ class ShoeListViewModel: ViewModel() {
         shoeList.toList()
     }
 
-    private val _shoeSaved = MutableLiveData<Boolean>(false)
+    private val _shoeSaved = MutableLiveData(false)
     val shoeSaved: LiveData<Boolean>
         get() = _shoeSaved
 
     init {
-
+        _shoeList.value = mutableListOf()
     }
 
     fun add(shoe: Shoe) {
-        // TODO: Resolve bug with null pointer
         Timber.i("Saving Shoe: ${shoe.toString()}")
         _shoeList.value!!.add(shoe)
         _shoeSaved.value = true

@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.store.models.Shoe
@@ -27,7 +28,15 @@ class ShoeListFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
 
+        val shoeListFragmentArgs by navArgs<ShoeListFragmentArgs>()
+
         viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
+
+        if (shoeListFragmentArgs.shoe != null) {
+            Timber.i("ShoeListFragment Args: ${shoeListFragmentArgs.shoe.toString()}")
+            viewModel.add(shoeListFragmentArgs.shoe!!)
+       }
+
 
         initButton()
         initObservables()
