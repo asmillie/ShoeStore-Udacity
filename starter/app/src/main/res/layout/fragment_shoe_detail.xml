@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="com.udacity.shoestore.utils.Converter" />
         <variable
             name="shoe"
             type="com.udacity.shoestore.store.models.Shoe" />
         <variable
             name="viewModel"
-            type="com.udacity.shoestore.MainActivityViewModel" />
+            type="com.udacity.shoestore.store.ShoeListSharedViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +25,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="text"
-            android:text="@{shoe.name}"
+            android:text="@={shoe.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.65"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +47,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@{shoe.company}"
+            android:text="@={shoe.company}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.65"
             app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +69,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="number|numberDecimal"
-            android:text="@{Double.valueOf(shoe.size).toString()}"
+            android:text="@={Converter.doubleToString(shoe.size)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.65"
             app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +92,7 @@
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine"
-            android:text="@{shoe.description}"
+            android:text="@={shoe.description}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.65"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,6 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/save"
+            android:onClick="@{() -> viewModel.addShoe(shoe)}"
             app:layout_constraintEnd_toEndOf="@+id/description_input"
             app:layout_constraintTop_toBottomOf="@+id/description_input" />
 
