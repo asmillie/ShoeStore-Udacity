@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.udacity.shoestore.MainActivityViewModel
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.store.models.Shoe
@@ -20,7 +21,7 @@ class ShoeListFragment : Fragment() {
 
     private lateinit var binding: FragmentShoeListBinding
 
-    private lateinit var viewModel: ShoeListViewModel
+    private lateinit var viewModel: MainActivityViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +31,7 @@ class ShoeListFragment : Fragment() {
 
         val shoeListFragmentArgs by navArgs<ShoeListFragmentArgs>()
 
-        viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
         if (shoeListFragmentArgs.shoe != null) {
             Timber.i("ShoeListFragment Args: ${shoeListFragmentArgs.shoe.toString()}")

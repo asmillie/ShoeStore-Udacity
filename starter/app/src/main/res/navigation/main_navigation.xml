@@ -37,10 +37,6 @@
         <action
             android:id="@+id/action_shoeListFragment_to_shoeDetailFragment"
             app:destination="@id/shoeDetailFragment" />
-        <argument
-            android:name="shoe"
-            app:argType="com.udacity.shoestore.store.models.Shoe"
-            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/shoeDetailFragment"
@@ -50,8 +46,5 @@
         <action
             android:id="@+id/action_shoeDetailFragment_to_shoeListFragment"
             app:destination="@id/shoeListFragment" />
-        <argument
-            android:name="shoe"
-            app:argType="com.udacity.shoestore.store.models.Shoe" />
     </fragment>
 </navigation>
