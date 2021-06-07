@@ -8,10 +8,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.udacity.shoestore.MainActivityViewModel
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.store.models.Shoe
@@ -21,23 +19,13 @@ class ShoeListFragment : Fragment() {
 
     private lateinit var binding: FragmentShoeListBinding
 
-    private lateinit var viewModel: MainActivityViewModel
+    private val viewModel: ShoeListSharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
-
-        val shoeListFragmentArgs by navArgs<ShoeListFragmentArgs>()
-
-        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
-
-        if (shoeListFragmentArgs.shoe != null) {
-            Timber.i("ShoeListFragment Args: ${shoeListFragmentArgs.shoe.toString()}")
-            viewModel.add(shoeListFragmentArgs.shoe!!)
-       }
-
 
         initButton()
         initObservables()
@@ -47,11 +35,9 @@ class ShoeListFragment : Fragment() {
 
     private fun initButton() {
         binding.addShoeFab.setOnClickListener {
-            val shoe = Shoe("", 0.0, "", "")
-
             // Navigate to Shoe Detail
             findNavController().navigate(
-                ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment(shoe)
+                ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment()
             )
         }
     }

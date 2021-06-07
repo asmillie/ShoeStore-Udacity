@@ -27,7 +27,7 @@ class InstructionsFragment : Fragment() {
     private fun initButton() {
         binding.continueButton.setOnClickListener {
             findNavController().navigate(
-                InstructionsFragmentDirections.actionInstructionsFragmentToShoeListFragment(null)
+                InstructionsFragmentDirections.actionInstructionsFragmentToShoeListFragment()
             )
         }
     }
