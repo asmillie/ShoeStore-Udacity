@@ -11,6 +11,7 @@ class ShoeListSharedViewModel: ViewModel() {
     // List of Shoes
     private val _shoeList = MutableLiveData<MutableList<Shoe>>()
     val shoeList: LiveData<List<Shoe>> = Transformations.map(_shoeList) { shoeList ->
+        Timber.i("Performing Transformation on ShoeList containing ${shoeList.count()} items")
         shoeList.toList()
     }
 
@@ -26,7 +27,23 @@ class ShoeListSharedViewModel: ViewModel() {
 
     fun addShoe(shoe: Shoe) {
         Timber.i("Saving Shoe: ${shoe.toString()}")
-        _shoeList.value!!.add(shoe)
+        val shoeList = _shoeList.value
+
+        if (shoeList != null && shoeList.isNotEmpty()) {
+            shoeList.add(shoe)
+            _shoeList.value = shoeList!!
+        } else {
+            _shoeList.value = mutableListOf(shoe)
+        }
+
+        val shoes = _shoeList.value
+        if (shoes != null) {
+            Timber.i("Current shoe list")
+            for (shoe in shoes) {
+                Timber.i("${shoe.name}")
+            }
+        }
+
         _eventShoeSaved.value = true
     }
 

@@ -44,6 +44,7 @@ class ShoeListFragment : Fragment() {
 
     private fun initObservables() {
         viewModel.shoeList.observe(viewLifecycleOwner, { shoes ->
+            Timber.i("Observed change to shoe list. Shoe List contains ${shoes.count()} items")
             // Build shoe list
             for (shoe in shoes) {
                 Timber.i("Looping through shoes")
@@ -54,11 +55,12 @@ class ShoeListFragment : Fragment() {
 
     private fun addShoeView(shoe: Shoe) {
         Timber.i("Adding view for shoe ${shoe.name}")
+
         val shoeText = TextView(context)
-        shoeText.text = shoe.name
+        shoeText.text = "Name: ${shoe.name}, Size: ${shoe.size}, Company: ${shoe.company}, Description: ${shoe.description}"
         shoeText.layoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.MATCH_PARENT
+            LinearLayout.LayoutParams.WRAP_CONTENT
         )
 
         binding.shoeList.addView(shoeText)
