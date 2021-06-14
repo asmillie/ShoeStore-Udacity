@@ -5,6 +5,13 @@
     android:id="@+id/main_navigation"
     app:startDestination="@id/loginFragment">
 
+    <action
+        android:id="@+id/action_global_loginFragment"
+        app:destination="@id/loginFragment"
+        app:popUpTo="@id/main_navigation"
+        app:popUpToInclusive="true"
+        app:launchSingleTop="true"/>
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.udacity.shoestore.login.LoginFragment"
@@ -35,7 +42,7 @@
     <fragment
         android:id="@+id/shoeListFragment"
         android:name="com.udacity.shoestore.store.ShoeListFragment"
-        android:label="ShoeListFragment" >
+        android:label="@string/shoes">
         <action
             android:id="@+id/action_shoeListFragment_to_shoeDetailFragment"
             app:destination="@id/shoeDetailFragment" />
@@ -43,12 +50,13 @@
     <fragment
         android:id="@+id/shoeDetailFragment"
         android:name="com.udacity.shoestore.store.ShoeDetailFragment"
-        android:label="fragment_shoe_detail"
-        tools:layout="@layout/fragment_shoe_detail" >
+        android:label="@string/add_shoe"
+        tools:layout="@layout/fragment_shoe_detail">
         <action
             android:id="@+id/action_shoeDetailFragment_to_shoeListFragment"
             app:destination="@id/shoeListFragment"
             app:popUpTo="@id/shoeListFragment"
             app:popUpToInclusive="true" />
     </fragment>
+
 </navigation>

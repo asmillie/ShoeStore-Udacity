@@ -20,4 +20,6 @@
     <string name="cancel">Cancel</string>
     <string name="continue_text">Continue</string>
     <string name="Name">name</string>
+    <string name="shoes">Shoes</string>
+    <string name="add_shoe">Add Shoe</string>
 </resources>
