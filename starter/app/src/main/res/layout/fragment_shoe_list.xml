@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <!--  LinearLayout chosen due to simplicity of layout and placed within ScrollView to allow for a larger set of items -->
-    <ScrollView
+    <!-- RelativeLayout as parent layout to allow for FAB to float on top of scrollview while staying positioned in bottom right  -->
+    <!-- LinearLayout within a Scrollview to allow for a list of items -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/shoe_list"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingStart="@dimen/shoe_list_padding"
-            android:paddingEnd="@dimen/shoe_list_padding">
+            android:layout_height="match_parent">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/add_shoe_fab"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/shoe_list"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
-                android:layout_margin="@dimen/fab_margin"
-                android:contentDescription="@string/add_a_shoe"
-                android:src="@drawable/ic_add" />
-        </LinearLayout>
-    </ScrollView>
+                android:orientation="vertical"
+                android:paddingStart="@dimen/shoe_list_padding"
+                android:paddingEnd="@dimen/shoe_list_padding" />
+        </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_shoe_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="@dimen/fab_margin"
+            android:contentDescription="@string/add_a_shoe"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_add" />
+    </RelativeLayout>
+
+
 </layout>
