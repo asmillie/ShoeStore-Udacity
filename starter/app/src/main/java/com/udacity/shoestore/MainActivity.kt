@@ -25,9 +25,12 @@ class MainActivity : AppCompatActivity() {
 
         Timber.plant(Timber.DebugTree())
 
+        setSupportActionBar(binding.toolbar)
+
         val navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(setOf(R.id.loginFragment, R.id.welcomeFragment))
 
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
+
     }
 }
