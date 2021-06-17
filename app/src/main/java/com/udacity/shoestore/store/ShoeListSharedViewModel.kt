@@ -31,7 +31,7 @@ class ShoeListSharedViewModel: ViewModel() {
 
         if (shoeList != null && shoeList.isNotEmpty()) {
             shoeList.add(shoe)
-            _shoeList.value = shoeList!!
+            _shoeList.value = shoeList
         } else {
             _shoeList.value = mutableListOf(shoe)
         }
