@@ -26,10 +26,11 @@ class ShoeDetailFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
-        binding.lifecycleOwner = this
-
-        binding.viewModel = viewModel
-        binding.shoe = Shoe("", 0.0, "", "")
+        with(binding) {
+            lifecycleOwner = this@ShoeDetailFragment
+            viewModel = viewModel
+            shoe = Shoe("", 0.0, "", "")
+        }
 
         initObservables()
         initButtons()
