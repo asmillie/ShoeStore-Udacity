@@ -42,6 +42,7 @@
         <action
             android:id="@+id/action_shoeListFragment_to_loginFragment"
             app:destination="@id/loginFragment"
+            app:launchSingleTop="false"
             app:popUpTo="@id/welcomeFragment"
             app:popUpToInclusive="true" />
     </fragment>

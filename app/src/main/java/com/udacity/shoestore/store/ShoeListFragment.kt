@@ -40,8 +40,14 @@ class ShoeListFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val navController = findNavController()
-        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+        if (item.itemId == R.id.logout) {
+            findNavController().navigate(
+                ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment()
+            )
+
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun initButton() {
